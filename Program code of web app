@@ -1,0 +1,553 @@
+# Covid-19-tracker
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="Sh7hM70ZmaNkXM15wP0ZVzRYXMCgshXlXtL5VbYXze4" />
+  <title>Covid Data India</title>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- css styles -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+
+<body> 
+
+  <nav class="navbar bg-dark flex-md-nowrap sticky-top p-1">
+    <p class="navbar-brand">CoviTracker India</p>
+    <form action="/" method="POST" class="form-inline">
+
+      <select name="stateSelect" id="stateSelect" class="btn btn-light stateSelect mr-2" >
+        <option value="" >Select state</option>
+      </select>
+
+      <select name="districtSelect" id="districtSelect" class="btn btn-light districtSelect mr-2">
+        <option value="">Select state before district</option>
+      </select>
+
+      <button class="btn pl-3 btn-success mr-2"><i class="fas fa-search mr-2"></i></button>
+    </form>
+  </nav>
+
+
+  <div class="container-fluid">
+      <main role="main" class="m-md-5">
+
+        <div class="text-center">
+          <h1 class="font-weight-bolder text-center india-heading">India</h1>
+          <p class="population">POPULATION: 1,392,234,846  </p> 
+          <hr class="mb-4">
+          <div class="data-section row">
+            <div class="col-lg-6 cases data-box">
+              <h3 class="mb-4 box-heading">Cases</h3>
+              <h6><span style="color: rgb(255, 166, 0);">●</span> Active</h6>
+              <p class="">
+                1,643,437
+              </p>
+
+              <hr>
+              <h6><span>●</span> Confirmed</h6>
+              <p class="">
+                28,572,142 <span class="daily-confirmed"> <i class="fas fa-arrow-up"></i>131,280 </span>
+              </p>
+
+              <hr>
+              <h6><span style="color: rgba(20, 175, 0, 0.973);">●</span> recovered </h6>
+              <p class="">
+                26,588,577
+              </p>
+
+              <hr>
+              <h6><span style="color: rgba(255, 0, 0, 0.973);">●</span> Deaths </h6>
+              <p class="">
+                340,128
+              </p>
+
+            </div>  
+            <div class="col-lg-6 vaccination data-box">
+              <h3 class="mb-4 box-heading">Vaccination <i class="fas fa-syringe"></i></h3>
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> First dose </h6>
+              <p class="">
+                175,665,160
+              </p>
+              <hr>
+
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> Fully vaccinated</h6>
+              <p class="">
+                45,378,533
+              </p>
+              <hr>
+
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span>% Fully vaccinated</h6>
+              <p class="">
+                3.29%
+              </p>
+              <!-- <hr> -->
+            </div>
+          </div>
+          <p class="source-stamp">Source: MOHFW · <a target="_blank" href="https://covid19india.org">Covid19India.org</a></p>
+        </div>
+
+        <hr class="last">
+
+        <div class="mt-5-custom text-center myChart">
+          <h4 class="mb-5">Covid19 in India - last week graphical representation</h4>
+          <canvas id="myChart" width="800" height="400"></canvas>
+        </div>
+
+        <hr class="break-line-strong mt-5">
+        
+        <h2 class="mt-5 mb-4 text-center states-heading">States / Union Territories</h2>
+        <div class="table-responsive mt-2">
+          <table class="table table-striped table-lg">
+            <thead class="table-dark">
+              <tr>
+                <th>State/UT</th>
+                <th>Confirmed</th>
+                <th>Active</th>
+                <th>Recovered</th>
+                <th>Deceased</th>
+                <th class="w-25">Vaccinated</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td class="stateName">Andaman and Nicobar Islands </td>
+                  <td>7,070 </td>
+                  <td class="activeCases">131 </td>
+                  <td>6,820 </td>
+                  <td>119 </td>
+                  <td>125,504 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Andhra Pradesh </td>
+                  <td>1,728,577 </td>
+                  <td class="activeCases">138,912 </td>
+                  <td>1,578,452 </td>
+                  <td>11,213 </td>
+                  <td>10,225,904 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Arunachal Pradesh </td>
+                  <td>28,382 </td>
+                  <td class="activeCases">3,843 </td>
+                  <td>24,420 </td>
+                  <td>119 </td>
+                  <td>343,230 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Assam </td>
+                  <td>424,385 </td>
+                  <td class="activeCases">51,881 </td>
+                  <td>368,981 </td>
+                  <td>3,523 </td>
+                  <td>4,199,011 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Bihar </td>
+                  <td>710,199 </td>
+                  <td class="activeCases">11,431 </td>
+                  <td>693,472 </td>
+                  <td>5,296 </td>
+                  <td>10,419,429 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Chandigarh </td>
+                  <td>60,399 </td>
+                  <td class="activeCases">1,135 </td>
+                  <td>58,502 </td>
+                  <td>762 </td>
+                  <td>360,600 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Chhattisgarh </td>
+                  <td>976,760 </td>
+                  <td class="activeCases">29,378 </td>
+                  <td>934,243 </td>
+                  <td>13,139 </td>
+                  <td>7,018,915 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Delhi </td>
+                  <td>1,427,926 </td>
+                  <td class="activeCases">8,748 </td>
+                  <td>1,394,731 </td>
+                  <td>24,447 </td>
+                  <td>5,498,429 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Dadra and Nagar Haveli </td>
+                  <td>10,339 </td>
+                  <td class="activeCases">262 </td>
+                  <td>10,073 </td>
+                  <td>4 </td>
+                  <td>207,609 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Goa </td>
+                  <td>157,847 </td>
+                  <td class="activeCases">9,700 </td>
+                  <td>145,437 </td>
+                  <td>2,710 </td>
+                  <td>537,740 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Gujarat </td>
+                  <td>813,270 </td>
+                  <td class="activeCases">24,404 </td>
+                  <td>778,976 </td>
+                  <td>9,890 </td>
+                  <td>17,471,742 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Himachal Pradesh </td>
+                  <td>193,137 </td>
+                  <td class="activeCases">11,080 </td>
+                  <td>178,840 </td>
+                  <td>3,217 </td>
+                  <td>2,482,605 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Haryana </td>
+                  <td>760,019 </td>
+                  <td class="activeCases">12,688 </td>
+                  <td>738,799 </td>
+                  <td>8,532 </td>
+                  <td>6,026,239 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Jharkhand </td>
+                  <td>338,915 </td>
+                  <td class="activeCases">7,307 </td>
+                  <td>326,597 </td>
+                  <td>5,011 </td>
+                  <td>4,263,838 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Jammu and Kashmir </td>
+                  <td>295,879 </td>
+                  <td class="activeCases">30,657 </td>
+                  <td>261,230 </td>
+                  <td>3,992 </td>
+                  <td>3,366,141 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Karnataka </td>
+                  <td>2,653,446 </td>
+                  <td class="activeCases">286,819 </td>
+                  <td>2,336,096 </td>
+                  <td>30,531 </td>
+                  <td>14,141,929 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Kerala </td>
+                  <td>2,584,854 </td>
+                  <td class="activeCases">185,041 </td>
+                  <td>2,390,437 </td>
+                  <td>9,376 </td>
+                  <td>9,676,157 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Ladakh </td>
+                  <td>18,841 </td>
+                  <td class="activeCases">1,531 </td>
+                  <td>17,119 </td>
+                  <td>191 </td>
+                  <td>167,974 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Lakshadweep </td>
+                  <td>8,479 </td>
+                  <td class="activeCases">1,384 </td>
+                  <td>7,060 </td>
+                  <td>35 </td>
+                  <td>35,316 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Maharashtra </td>
+                  <td>5,791,413 </td>
+                  <td class="activeCases">207,813 </td>
+                  <td>5,486,206 </td>
+                  <td>97,394 </td>
+                  <td>23,052,074 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Meghalaya </td>
+                  <td>37,149 </td>
+                  <td class="activeCases">6,352 </td>
+                  <td>30,172 </td>
+                  <td>625 </td>
+                  <td>469,556 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Manipur </td>
+                  <td>52,899 </td>
+                  <td class="activeCases">8,863 </td>
+                  <td>43,187 </td>
+                  <td>849 </td>
+                  <td>469,763 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Madhya Pradesh </td>
+                  <td>782,945 </td>
+                  <td class="activeCases">14,186 </td>
+                  <td>760,552 </td>
+                  <td>8,207 </td>
+                  <td>11,476,780 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Mizoram </td>
+                  <td>12,859 </td>
+                  <td class="activeCases">3,235 </td>
+                  <td>9,578 </td>
+                  <td>46 </td>
+                  <td>316,758 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Nagaland </td>
+                  <td>22,240 </td>
+                  <td class="activeCases">5,347 </td>
+                  <td>16,489 </td>
+                  <td>404 </td>
+                  <td>277,116 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Odisha </td>
+                  <td>790,970 </td>
+                  <td class="activeCases">74,989 </td>
+                  <td>713,055 </td>
+                  <td>2,926 </td>
+                  <td>8,032,250 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Punjab </td>
+                  <td>574,114 </td>
+                  <td class="activeCases">28,673 </td>
+                  <td>530,601 </td>
+                  <td>14,840 </td>
+                  <td>5,111,065 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Puducherry </td>
+                  <td>107,114 </td>
+                  <td class="activeCases">10,015 </td>
+                  <td>95,516 </td>
+                  <td>1,583 </td>
+                  <td>275,845 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Rajasthan </td>
+                  <td>943,494 </td>
+                  <td class="activeCases">27,408 </td>
+                  <td>907,527 </td>
+                  <td>8,559 </td>
+                  <td>17,231,186 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Sikkim </td>
+                  <td>16,165 </td>
+                  <td class="activeCases">4,398 </td>
+                  <td>11,504 </td>
+                  <td>263 </td>
+                  <td>239,115 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Telangana </td>
+                  <td>585,489 </td>
+                  <td class="activeCases">32,579 </td>
+                  <td>549,579 </td>
+                  <td>3,331 </td>
+                  <td>6,214,443 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Tamil Nadu </td>
+                  <td>2,172,751 </td>
+                  <td class="activeCases">280,426 </td>
+                  <td>1,866,660 </td>
+                  <td>25,665 </td>
+                  <td>9,339,816 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Tripura </td>
+                  <td>53,219 </td>
+                  <td class="activeCases">6,518 </td>
+                  <td>46,170 </td>
+                  <td>531 </td>
+                  <td>1,618,367 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">TT </td>
+                  <td>28,572,359 </td>
+                  <td class="activeCases">1,642,832 </td>
+                  <td>26,588,808 </td>
+                  <td>340,719 </td>
+                  <td>221,043,693 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Uttar Pradesh </td>
+                  <td>1,695,212 </td>
+                  <td class="activeCases">25,546 </td>
+                  <td>1,648,771 </td>
+                  <td>20,895 </td>
+                  <td>19,034,656 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">Uttarakhand </td>
+                  <td>332,067 </td>
+                  <td class="activeCases">28,372 </td>
+                  <td>297,122 </td>
+                  <td>6,573 </td>
+                  <td>2,944,247 </td>
+                </tr>
+              
+                <tr>
+                  <td class="stateName">West Bengal </td>
+                  <td>1,403,535 </td>
+                  <td class="activeCases">61,780 </td>
+                  <td>1,325,834 </td>
+                  <td>15,921 </td>
+                  <td>15,181,356 </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </main>
+  </div>
+
+      <!-- hidden data got from app.js and to be transfered to myChart.js to make graph -->
+      
+        <p class="monthData" style="display: none;">
+          174083
+        </p>
+      
+        <p class="monthData" style="display: none;">
+          165282
+        </p>
+      
+        <p class="monthData" style="display: none;">
+          153396
+        </p>
+      
+        <p class="monthData" style="display: none;">
+          126883
+        </p>
+      
+        <p class="monthData" style="display: none;">
+          133152
+        </p>
+      
+        <p class="monthData" style="display: none;">
+          134044
+        </p>
+      
+        <p class="monthData" style="display: none;">
+          131280
+        </p>
+      
+    
+      
+        <p class="monthDates" style="display: none;">
+          28 May 2021
+        </p>
+       
+        <p class="monthDates" style="display: none;">
+          29 May 2021
+        </p>
+       
+        <p class="monthDates" style="display: none;">
+          30 May 2021
+        </p>
+       
+        <p class="monthDates" style="display: none;">
+          31 May 2021
+        </p>
+       
+        <p class="monthDates" style="display: none;">
+          1 June 2021
+        </p>
+       
+        <p class="monthDates" style="display: none;">
+          2 June 2021
+        </p>
+       
+        <p class="monthDates" style="display: none;">
+          3 June 2021
+        </p>
+       
+
+<footer id="footer" class="text-center padding-primary border-top">
+
+    <a href="https://www.linkedin.com/in/pratik-karale-10461313a"><i class="fab fa-linkedin-in footer-icon"></i></a>
+    <a href="https://github.com/pratikkarale"><i class="fab fa-github footer-icon"></i></a> 
+
+    <p class="footer-text">The whole and soul of this web application is developed by <span class="name">Pratik Karale</span></p>
+    <p>Give me<a href="mailto:pratikkarale2001@gmail.com"> feedback!</a></p>
+
+    <p class="footer-text font-weight-bold">Tech-Stack Used</p>
+    <p>front-end : HTML, CSS, JAVASCRIPT, BOOTSTRAP</p>
+    <p>data visualization (covid19 graph) : CHART.JS</p>
+    <p>back-end : NODE.JS, EXPRESS.JS , GIT</p>
+    <p>tools : EJS, GIT, JQUERY</p>
+    <p>hosting : HEROKU </p>
+  </footer>
+
+          <!-- chart.js -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+          <!-- custom js -->
+          <script src="/chart/myChart.js"></script>
+          <!-- jquery -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+          <!-- js for dropdown state and district select -->
+          <script src="/js/index.js"></script>
+</body>
+
+</html> 
+
